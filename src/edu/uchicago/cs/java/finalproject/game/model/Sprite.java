@@ -316,14 +316,15 @@ public abstract class Sprite implements Movable {
 
 
 	public void expire() {
-	}
 
-	public int getFadeValue() {
+		}
+	public int getFadeValue(){
 		return nFade;
 	}
 
-	public void setFadeValue(int n) {
+	public void setFadeValue(int n){
 		nFade = n;
 	}
+	}
 
-}
+

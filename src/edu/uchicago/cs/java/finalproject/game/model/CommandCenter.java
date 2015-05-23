@@ -1,5 +1,6 @@
 package edu.uchicago.cs.java.finalproject.game.model;
 
+import java.awt.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import edu.uchicago.cs.java.finalproject.sounds.Sound;
@@ -12,6 +13,7 @@ public class CommandCenter {
 	private static int nLevel;
 	private static long lScore;
 	private static Falcon falShip;
+	private static Debris debris;
 	private static boolean bPlaying;
 	private static boolean bPaused;
 	
@@ -108,6 +110,11 @@ public class CommandCenter {
 	public static void setFalcon(Falcon falParam){
 		falShip = falParam;
 	}
+
+	public static Debris getDebris() {return  debris;}
+
+	public static void setDebris(Sprite deadSprite, Point start, Point end){}
+
 
 	public static CopyOnWriteArrayList<Movable> getMovDebris() {
 		return movDebris;

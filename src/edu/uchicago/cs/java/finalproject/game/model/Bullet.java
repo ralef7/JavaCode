@@ -2,6 +2,7 @@ package edu.uchicago.cs.java.finalproject.game.model;
 
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Random;
 
 import edu.uchicago.cs.java.finalproject.controller.Game;
 
@@ -9,13 +10,15 @@ import edu.uchicago.cs.java.finalproject.controller.Game;
 public class Bullet extends Sprite {
 
 	  private final double FIRE_POWER = 35.0;
+	  private final int EXPLSION_RADIUS = 10;
+	  private static Random R;
 
 	 
 	
 public Bullet(Falcon fal){
 		
 		super();
-		
+		R = new Random();
 		
 		//defined the points on a cartesean grid
 		ArrayList<Point> pntCs = new ArrayList<Point>();

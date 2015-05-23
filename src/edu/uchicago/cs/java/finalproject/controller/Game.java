@@ -28,7 +28,8 @@ public class Game implements Runnable, KeyListener {
 	public final static int ANI_DELAY = 45; // milliseconds between screen
 											// updates (animation)
 	private Thread thrAnim;
-	private int nLevel = 1;
+	private int nLevel = 1;      // bonus points for clearing a level
+	private int totalScore = 0;  //score for the current game
 	private int nTick = 0;
 	private ArrayList<Tuple> tupMarkForRemovals;
 	private ArrayList<Tuple> tupMarkForAdds;
@@ -63,7 +64,7 @@ public class Game implements Runnable, KeyListener {
 
 	public Game() {
 
-		gmpPanel = new GamePanel(DIM);
+		gmpPanel = new EnhancedGamePanel(DIM);
 		gmpPanel.addKeyListener(this);
 
 		clpThrust = Sound.clipForLoopFactory("whitenoise.wav");
@@ -210,6 +211,10 @@ public class Game implements Runnable, KeyListener {
 	
 					
 					tupMarkForRemovals.add(new Tuple(CommandCenter.movFloaters, movFloater));
+					totalScore += 100;
+					CommandCenter.setScore(totalScore);
+					CommandCenter.setNumFalcons(CommandCenter.getNumFalcons()+1);
+					EnhancedCommandCenter.setHighScore();
 					Sound.playSound("pacman_eatghost.wav");
 	
 				}//end if 
@@ -242,6 +247,8 @@ public class Game implements Runnable, KeyListener {
 				//spawn two medium Asteroids
 				tupMarkForAdds.add(new Tuple(CommandCenter.movFoes,new Asteroid(astExploded)));
 				tupMarkForAdds.add(new Tuple(CommandCenter.movFoes,new Asteroid(astExploded)));
+				CommandCenter.setScore(totalScore += 100);
+				EnhancedCommandCenter.setHighScore();
 				
 			} 
 			//medium size aseroid exploded
@@ -250,25 +257,22 @@ public class Game implements Runnable, KeyListener {
 				tupMarkForAdds.add(new Tuple(CommandCenter.movFoes,new Asteroid(astExploded)));
 				tupMarkForAdds.add(new Tuple(CommandCenter.movFoes,new Asteroid(astExploded)));
 				tupMarkForAdds.add(new Tuple(CommandCenter.movFoes,new Asteroid(astExploded)));
+				CommandCenter.setScore(totalScore += 50);
+				EnhancedCommandCenter.setHighScore();
 			}
 			//remove the original Foe	
 			tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
-		
+			CommandCenter.setScore(totalScore += 25);
+			EnhancedCommandCenter.setHighScore();
 			
 		} 
 		//not an asteroid
 		else {
 			//remove the original Foe
 			tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
+			CommandCenter.setScore(totalScore += 100);
+			EnhancedCommandCenter.setHighScore();
 		}
-		
-		
-		
-
-		
-		
-		
-		
 	}
 
 	//some methods for timing events in the game,
@@ -292,11 +296,15 @@ public class Game implements Runnable, KeyListener {
 		}
 	}
 
+
+
 	// Called when user presses 's'
 	private void startGame() {
 		CommandCenter.clearAll();
 		CommandCenter.initGame();
 		CommandCenter.setLevel(0);
+		EnhancedCommandCenter.setHighScore();
+		totalScore = 0;
 		CommandCenter.setPlaying(true);
 		CommandCenter.setPaused(false);
 		//if (!bMuted)
@@ -314,7 +322,6 @@ public class Game implements Runnable, KeyListener {
 	
 	private boolean isLevelClear(){
 		//if there are no more Asteroids on the screen
-		
 		boolean bAsteroidFree = true;
 		for (Movable movFoe : CommandCenter.movFoes) {
 			if (movFoe instanceof Asteroid){
@@ -333,9 +340,12 @@ public class Game implements Runnable, KeyListener {
 		if (isLevelClear() ){
 			if (CommandCenter.getFalcon() !=null)
 				CommandCenter.getFalcon().setProtected(true);
+
 			
 			spawnAsteroids(CommandCenter.getLevel() + 2);
 			CommandCenter.setLevel(CommandCenter.getLevel() + 1);
+			totalScore += (CommandCenter.getLevel()-1)*100;
+			CommandCenter.setScore(totalScore);
 
 		}
 	}

@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 
 import edu.uchicago.cs.java.finalproject.controller.Game;
 import edu.uchicago.cs.java.finalproject.game.model.CommandCenter;
+import edu.uchicago.cs.java.finalproject.game.model.EnhancedCommandCenter;
 import edu.uchicago.cs.java.finalproject.game.model.Falcon;
 import edu.uchicago.cs.java.finalproject.game.model.Movable;
 
@@ -69,6 +70,11 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 			g.drawString("SCORE :  " + CommandCenter.getScore(), nFontWidth, nFontHeight);
 		} else {
 			g.drawString("NO SCORE", nFontWidth, nFontHeight);
+		}
+		if (EnhancedCommandCenter.getHighScore() != 0) {
+			g.drawString("HIGH SCORE :  " + EnhancedCommandCenter.getHighScore(), nFontWidth, nFontHeight+20);
+		} else {
+			g.drawString("NO HIGH SCORE", nFontWidth, nFontHeight+15);
 		}
 	}
 	

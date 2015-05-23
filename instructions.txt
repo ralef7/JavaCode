@@ -35,7 +35,7 @@ Qix, etc. You MUST extend the code base provided, but you would effectively igno
 your own model.
 
 Option 2: Use the base code provided and extend the Asteroids model to create your own version of Asteroids. If you
-choose this option, you should expect to make your own special weapons, provide explosions with debris. Other options
+choose this option,  s, provide explosions with debris. Other options
 include a shield, hyperspace, firing UFOs, guided missiles, etc. You MUST extend the code base provided.
 
 Jonathan will select the top six games. The six finalists will demonstrate their games and present their code and
