@@ -32,7 +32,7 @@ public class Debris extends Sprite {
         double orientation = CommandCenter.getFalcon().getOrientation();
         setOrientation((int)Math.toDegrees(orientation));
 
-        double[] spotLength = {1, 1};
+        double[] spotLength = {.5, .5};
         double[] degrees = {
                 Math.PI / 2, 180 * Math.PI / 360 + Math.PI};
         setLengths(spotLength);
