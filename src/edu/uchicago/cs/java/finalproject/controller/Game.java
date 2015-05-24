@@ -34,6 +34,7 @@ public class Game implements Runnable, KeyListener {
 	private ArrayList<Tuple> tupMarkForRemovals;
 	private ArrayList<Tuple> tupMarkForAdds;
 	private boolean bMuted = true;
+	UFO ufo = new UFO();
 	
 
 	private final int PAUSE = 80, // p key
@@ -178,7 +179,10 @@ public class Game implements Runnable, KeyListener {
 					if ((movFriend instanceof Falcon) ){
 						if (!CommandCenter.getFalcon().getProtected()){
 							tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
-							CommandCenter.movDebris.add(new Debris((Sprite)movFriend, movFriend.getCenter(), movFriend.getCenter()));
+							for (int i = 0; i < 100; i++){
+								CommandCenter.movDebris.add(new Debris((Sprite)movFriend, movFriend.getCenter(), movFriend.getCenter()));
+							}
+
 							CommandCenter.spawnFalcon(false);
 							killFoe(movFoe);
 
@@ -187,7 +191,10 @@ public class Game implements Runnable, KeyListener {
 					//not the falcon
 					else {
 						tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
-						CommandCenter.movDebris.add(new Debris((Sprite)movFoe, movFoe.getCenter(), movFoe.getCenter()));
+
+						for (int i = 0; i < 100; i++) {
+							CommandCenter.movDebris.add(new Debris((Sprite) movFoe, movFoe.getCenter(), movFoe.getCenter()));
+						}
 						killFoe(movFoe);
 					}//end else 
 
@@ -325,7 +332,11 @@ public class Game implements Runnable, KeyListener {
 	}
 	private void spawnUFO(){
 		if (nTick % (SPAWN_NEW_SHIP_UFO - nLevel) == 0) {
-			CommandCenter.movFoes.add(new UFO());
+			CommandCenter.movFoes.add(ufo);
+			if (getTick() % 25 == 0){
+				CommandCenter.movFoes.add(new BulletUFO(ufo));
+			}
+
 		}
 	}
 	

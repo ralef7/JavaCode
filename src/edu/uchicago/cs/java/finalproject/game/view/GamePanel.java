@@ -14,6 +14,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import javax.swing.JFrame;
 
 
+import com.sun.jmx.remote.internal.ClientCommunicatorAdmin;
 import edu.uchicago.cs.java.finalproject.controller.Game;
 import edu.uchicago.cs.java.finalproject.game.model.CommandCenter;
 import edu.uchicago.cs.java.finalproject.game.model.EnhancedCommandCenter;
@@ -77,6 +78,12 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 			g.drawString("NO HIGH SCORE", nFontWidth, nFontHeight+15);
 		}
 	}
+
+	 private void showLevel(Graphics g){
+		 g.setColor(Color.white);
+		 g.setFont(fnt);
+		 g.drawString("LEVEL: " + CommandCenter.getLevel(), nFontWidth, nFontHeight + 40);
+	 }
 	
 	@SuppressWarnings("unchecked")
 	public void update(Graphics g) {
@@ -91,6 +98,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		grpOff.fillRect(0, 0, Game.DIM.width, Game.DIM.height);
 
 		drawScore(grpOff);
+		showLevel(grpOff);
 		
 		if (!CommandCenter.isPlaying()) {
 			displayTextOnScreen();
