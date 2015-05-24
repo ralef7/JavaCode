@@ -55,6 +55,7 @@ public class Game implements Runnable, KeyListener {
 	private Clip clpMusicBackground;
 
 	private static final int SPAWN_NEW_SHIP_FLOATER = 1200;
+	private static final int SPAWN_NEW_SHIP_UFO = 1200;
 
 
 
@@ -112,6 +113,7 @@ public class Game implements Runnable, KeyListener {
 		while (Thread.currentThread() == thrAnim) {
 			tick();
 			spawnNewShipFloater();
+			spawnUFO();
 			gmpPanel.update(gmpPanel.getGraphics()); // update takes the graphics context we must 
 														// surround the sleep() in a try/catch block
 														// this simply controls delay time between 
@@ -176,7 +178,6 @@ public class Game implements Runnable, KeyListener {
 					if ((movFriend instanceof Falcon) ){
 						if (!CommandCenter.getFalcon().getProtected()){
 							tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
-							Sprite deadSprite = (Sprite) movFriend;
 							CommandCenter.movDebris.add(new Debris((Sprite)movFriend, movFriend.getCenter(), movFriend.getCenter()));
 							CommandCenter.spawnFalcon(false);
 							killFoe(movFoe);
@@ -274,7 +275,7 @@ public class Game implements Runnable, KeyListener {
 		else {
 			//remove the original Foe
 			tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
-			CommandCenter.setScore(totalScore += 100);
+			CommandCenter.setScore(totalScore += 10000);
 			EnhancedCommandCenter.setHighScore();
 		}
 	}
@@ -320,6 +321,11 @@ public class Game implements Runnable, KeyListener {
 		for (int nC = 0; nC < nNum; nC++) {
 			//Asteroids with size of zero are big
 			CommandCenter.movFoes.add(new Asteroid(0));
+		}
+	}
+	private void spawnUFO(){
+		if (nTick % (SPAWN_NEW_SHIP_UFO - nLevel * 4) == 0) {
+			CommandCenter.movFoes.add(new UFO());
 		}
 	}
 	

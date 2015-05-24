@@ -13,7 +13,7 @@ public class Debris extends Sprite {
 
     public Debris(Sprite deadSprite, Point startSprite, Point endSprite){
         super();
-        color = Color.WHITE;
+        color = Color.RED;
         setExpire(5);
         setRadius(12);
        // ArrayList<Point> pntCs = new ArrayList<Point>();
