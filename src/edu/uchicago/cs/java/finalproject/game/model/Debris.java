@@ -11,27 +11,25 @@ import java.util.ArrayList;
 public class Debris extends Sprite {
     private Color color;
 
-
-
-    public Debris(Sprite deadSprite, Point start, Point end){
+    public Debris(Sprite deadSprite, Point startSprite, Point endSprite){
         super();
-        color = Color.RED;
+        color = Color.WHITE;
         setExpire(5);
         setRadius(12);
-        ArrayList<Point> pntCs = new ArrayList<Point>();
+       // ArrayList<Point> pntCs = new ArrayList<Point>();
 
         //pntCs.add()  add points of debris from whatever got hit
 
         //everything is relative to the object that explodes
-        double radius = Math.sqrt(Math.pow(start.getX() - end.getX(),2) + Math.pow((start.getY() + end.getY()),2))/2;
-        Point mid = new Point((int)(start.getX() + end.getX() )/ 2, (int)(start.getY() + end.getY() )/2);
+        double radius = Math.sqrt(Math.pow(startSprite.getX() - endSprite.getX(),2) + Math.pow((startSprite.getY() + endSprite.getY()),2))/2;
+        Point mid = new Point((int)(startSprite.getX() + endSprite.getX() )/ 2, (int)(startSprite.getY() + endSprite.getY() )/2);
         setDeltaX(deadSprite.getDeltaX() + (mid.x - deadSprite.getCenter().x) / 6);
         setDeltaY(deadSprite.getDeltaY() + (mid.y - deadSprite.getCenter().y) / 6);
 
         setCenter(mid);
         setRadius((int) radius);
 
-        double orientation = Math.atan2(start.y - mid.y, start.x - mid.x);
+        double orientation = CommandCenter.getFalcon().getOrientation();
         setOrientation((int)Math.toDegrees(orientation));
 
         double[] spotLength = {1, 1};
@@ -40,7 +38,7 @@ public class Debris extends Sprite {
         setLengths(spotLength);
         setDegrees(degrees);
 
-        setExpire(20);
+        setExpire(5);
         setFadeValue(200);
         this.setColor(color);
     }
@@ -58,7 +56,7 @@ public class Debris extends Sprite {
 
     public void expire(){
         if (getExpire() == 0){
-            CommandCenter.movFriends.remove(this);
+            CommandCenter.movDebris.remove(this);
         }
         else{
             setExpire(getExpire() - 1);

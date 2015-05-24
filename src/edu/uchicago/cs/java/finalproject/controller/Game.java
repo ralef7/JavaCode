@@ -176,18 +176,22 @@ public class Game implements Runnable, KeyListener {
 					if ((movFriend instanceof Falcon) ){
 						if (!CommandCenter.getFalcon().getProtected()){
 							tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
+							Sprite deadSprite = (Sprite) movFriend;
+							CommandCenter.movDebris.add(new Debris((Sprite)movFriend, movFriend.getCenter(), movFriend.getCenter()));
 							CommandCenter.spawnFalcon(false);
 							killFoe(movFoe);
+
 						}
 					}
 					//not the falcon
 					else {
 						tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
+						CommandCenter.movDebris.add(new Debris((Sprite)movFoe, movFoe.getCenter(), movFoe.getCenter()));
 						killFoe(movFoe);
 					}//end else 
 
 					//explode/remove foe
-					
+
 					
 				
 				}//end if 
@@ -213,7 +217,7 @@ public class Game implements Runnable, KeyListener {
 					tupMarkForRemovals.add(new Tuple(CommandCenter.movFloaters, movFloater));
 					totalScore += 100;
 					CommandCenter.setScore(totalScore);
-					CommandCenter.setNumFalcons(CommandCenter.getNumFalcons()+1);
+					CommandCenter.setNumFalcons(CommandCenter.getNumFalcons() + 1);
 					EnhancedCommandCenter.setHighScore();
 					Sound.playSound("pacman_eatghost.wav");
 	
