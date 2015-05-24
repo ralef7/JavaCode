@@ -16,6 +16,7 @@ public class UFO extends Sprite {
     //radius of our UFO
     private final int RAD = 30;
     private int nSpin;
+    private final int RECKLESS_MOVER = 20;
 
 
     public UFO(){
@@ -72,13 +73,13 @@ public class UFO extends Sprite {
 
 
         //random delta-x
-        int nDX = Game.R.nextInt(10);
+        int nDX = RECKLESS_MOVER;
         if(nDX %2 ==0)
             nDX = -nDX;
         setDeltaX(nDX);
 
         //random delta-y
-        int nDY = Game.R.nextInt(10);
+        int nDY = RECKLESS_MOVER;
         if(nDY %2 ==0)
             nDY = -nDY;
         setDeltaY(nDY);
