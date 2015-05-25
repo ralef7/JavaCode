@@ -179,7 +179,7 @@ public class Game implements Runnable, KeyListener {
 					if ((movFriend instanceof Falcon) ){
 						if (!CommandCenter.getFalcon().getProtected()){
 							tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
-							for (int i = 0; i < 100; i++){
+							for (int i = 0; i < 50; i++){
 								CommandCenter.movDebris.add(new Debris((Sprite)movFriend, movFriend.getCenter(), movFriend.getCenter()));
 							}
 
@@ -192,7 +192,7 @@ public class Game implements Runnable, KeyListener {
 					else {
 						tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
 
-						for (int i = 0; i < 100; i++) {
+						for (int i = 0; i < 50; i++) {
 							CommandCenter.movDebris.add(new Debris((Sprite) movFoe, movFoe.getCenter(), movFoe.getCenter()));
 						}
 						killFoe(movFoe);

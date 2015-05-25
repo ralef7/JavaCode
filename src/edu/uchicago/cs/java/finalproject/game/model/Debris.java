@@ -22,7 +22,7 @@ public class Debris extends Asteroid {
         int xAdjuster = Game.R.nextInt(30);
         int yAdjuster = Game.R.nextInt(30);
         double radius = Math.sqrt(Math.pow(startSprite.getX() - endSprite.getX(), 2) + Math.pow((startSprite.getY() + endSprite.getY()), 2)) / 2;
-        Point mid = new Point((int) ((startSprite.getX() + xAdjuster) + (endSprite.getX() + xAdjuster*1.5)) / 2, (int) (startSprite.getY() + yAdjuster + endSprite.getY() + yAdjuster*1.5) / 2);
+        Point mid = new Point((int) ((startSprite.getX() + xAdjuster) + (endSprite.getX() + xAdjuster*2)) / 2, (int) (startSprite.getY() + yAdjuster + endSprite.getY() + yAdjuster*1.75) / 2);
         setDeltaX(deadSprite.getDeltaX() + (mid.x - deadSprite.getCenter().x) / 6);
         setDeltaY(deadSprite.getDeltaY() + (mid.y - deadSprite.getCenter().y) / 6);
 
