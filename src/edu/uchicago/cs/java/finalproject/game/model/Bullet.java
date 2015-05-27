@@ -1,6 +1,6 @@
 package edu.uchicago.cs.java.finalproject.game.model;
 
-import java.awt.Point;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -34,6 +34,8 @@ public Bullet(Falcon fal){
 		//a bullet expires after 20 frames
 	    setExpire( 20 );
 	    setRadius(6);
+
+		setColor(Color.WHITE);
 	    
 
 	    //everything is relative to the falcon ship that fired the bullet

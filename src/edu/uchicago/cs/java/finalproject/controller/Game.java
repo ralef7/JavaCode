@@ -35,6 +35,8 @@ public class Game implements Runnable, KeyListener {
 	private ArrayList<Tuple> tupMarkForAdds;
 	private boolean bMuted = true;
 	UFO ufo = new UFO();
+	boolean ownSpecialWeapon = false;
+
 	
 
 	private final int PAUSE = 80, // p key
@@ -45,7 +47,7 @@ public class Game implements Runnable, KeyListener {
 			START = 83, // s key
 			FIRE = 32, // space key
 			MUTE = 77, // m-key mute
-
+			HYPERSPACE = 10, //enter to go to hyperspace
 	// for possible future use
 	// HYPER = 68, 					// d key
 	// SHIELD = 65, 				// a key arrow
@@ -56,6 +58,7 @@ public class Game implements Runnable, KeyListener {
 	private Clip clpMusicBackground;
 
 	private static final int SPAWN_NEW_SHIP_FLOATER = 1200;
+	private static final int SPAWN_WEAPONS_UPGRADE = 1200;
 	private static final int SPAWN_NEW_SHIP_UFO = 1200;
 
 
@@ -114,6 +117,7 @@ public class Game implements Runnable, KeyListener {
 		while (Thread.currentThread() == thrAnim) {
 			tick();
 			spawnNewShipFloater();
+			spawnUpgradeWeaponFloater();
 			spawnUFO();
 			gmpPanel.update(gmpPanel.getGraphics()); // update takes the graphics context we must 
 														// surround the sleep() in a try/catch block
@@ -223,9 +227,16 @@ public class Game implements Runnable, KeyListener {
 	
 					
 					tupMarkForRemovals.add(new Tuple(CommandCenter.movFloaters, movFloater));
-					totalScore += 100;
+					totalScore += 10;
 					CommandCenter.setScore(totalScore);
-					CommandCenter.setNumFalcons(CommandCenter.getNumFalcons() + 1);
+					if (movFloater instanceof NewShipFloater)
+					{
+						CommandCenter.setNumFalcons(CommandCenter.getNumFalcons() + 1);
+					}
+					if (movFloater instanceof UpgradeWeaponFloater)
+					{
+						ownSpecialWeapon = true;
+					}
 					EnhancedCommandCenter.setHighScore();
 					Sound.playSound("pacman_eatghost.wav");
 	
@@ -282,7 +293,7 @@ public class Game implements Runnable, KeyListener {
 		else {
 			//remove the original Foe
 			tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
-			CommandCenter.setScore(totalScore += 10000);
+			CommandCenter.setScore(totalScore += 1000);
 			EnhancedCommandCenter.setHighScore();
 		}
 	}
@@ -305,6 +316,13 @@ public class Game implements Runnable, KeyListener {
 		//the higher the level the more frequent the appearance
 		if (nTick % (SPAWN_NEW_SHIP_FLOATER - nLevel * 7) == 0) {
 			CommandCenter.movFloaters.add(new NewShipFloater());
+		}
+	}
+
+	private void spawnUpgradeWeaponFloater(){
+		//this weapon should be given early in the game, and then occassionally thereafter
+		if (nTick % (SPAWN_WEAPONS_UPGRADE - nLevel * 100) == 0){
+			CommandCenter.movFloaters.add(new UpgradeWeaponFloater());
 		}
 	}
 
@@ -333,7 +351,7 @@ public class Game implements Runnable, KeyListener {
 	private void spawnUFO(){
 		if (nTick % (SPAWN_NEW_SHIP_UFO - nLevel) == 0) {
 			CommandCenter.movFoes.add(ufo);
-			if (getTick() % 25 == 0){
+			if (getTick() % 5 == 0){
 				CommandCenter.movFoes.add(new BulletUFO(ufo));
 			}
 
@@ -439,7 +457,25 @@ public class Game implements Runnable, KeyListener {
 		if (fal != null) {
 			switch (nKey) {
 			case FIRE:
-				CommandCenter.movFriends.add(new Bullet(fal));
+				if (ownSpecialWeapon == false)
+				{
+					CommandCenter.movFriends.add(new Bullet(fal));
+				}
+				else
+				{
+					CommandCenter.movFriends.add(new SpecialBullet(fal));
+					CommandCenter.movFriends.add(new SpecialBullet(fal));
+					CommandCenter.movFriends.add(new SpecialBullet(fal));
+					CommandCenter.movFriends.add(new SpecialBullet(fal));
+				}
+				if (CommandCenter.movFoes.contains(ufo))
+				{
+					CommandCenter.movFoes.add(new BulletUFO(ufo));
+					CommandCenter.movFoes.add(new BulletUFO(ufo));
+					CommandCenter.movFoes.add(new BulletUFO(ufo));
+				}
+
+
 				Sound.playSound("laser.wav");
 				break;
 				
@@ -448,7 +484,7 @@ public class Game implements Runnable, KeyListener {
 				CommandCenter.movFriends.add(new Cruise(fal));
 				//Sound.playSound("laser.wav");
 				break;
-				
+
 			case LEFT:
 				fal.stopRotating();
 				break;
@@ -464,7 +500,8 @@ public class Game implements Runnable, KeyListener {
 				if (!bMuted){
 					stopLoopingSounds(clpMusicBackground);
 					bMuted = !bMuted;
-				} 
+					break;
+				}
 				else {
 					clpMusicBackground.loop(Clip.LOOP_CONTINUOUSLY);
 					bMuted = !bMuted;

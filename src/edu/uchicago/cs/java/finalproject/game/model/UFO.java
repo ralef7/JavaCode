@@ -16,7 +16,7 @@ public class UFO extends Sprite {
     //radius of our UFO
     private final int RAD = 30;
     private int nSpin;
-    private final int RECKLESS_MOVER = 20;
+    private final int RECKLESS_MOVER = 10;
 
 
     public UFO(){
@@ -27,9 +27,9 @@ public class UFO extends Sprite {
         ArrayList<Point> pntCs = new ArrayList<Point>();
 
         // top of ship
-        pntCs.add(new Point(0, 14));
+        pntCs.add(new Point(0, 18));
 
-        //TODO: right points no idea what points of ufo should be... we'll start here
+        //right points
         pntCs.add(new Point(3, 3));
         pntCs.add(new Point(12, 0));
         pntCs.add(new Point(13, -2));
@@ -40,7 +40,7 @@ public class UFO extends Sprite {
         pntCs.add(new Point(4, -12));
         pntCs.add(new Point(2, -13));
 
-        //TODO: left points no idea what points for ufo should be... we'll start here
+        //left points
         pntCs.add(new Point(-2, -13));
         pntCs.add(new Point(-4, -12));
         pntCs.add(new Point(-2, -10));

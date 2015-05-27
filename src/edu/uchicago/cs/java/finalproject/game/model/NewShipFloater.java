@@ -39,14 +39,14 @@ public class NewShipFloater extends Sprite {
 
 		
 		//set random DeltaX
-		int nX = Game.R.nextInt(10);
+		int nX = Game.R.nextInt(15);
 		if (nX % 2 == 0)
 			setDeltaX(nX);
 		else
 			setDeltaX(-nX);
 
 		//set rnadom DeltaY
-		int nY = Game.R.nextInt(10);
+		int nY = Game.R.nextInt(15);
 		if (nY % 2 == 0)
 			setDeltaX(nY);
 		else
