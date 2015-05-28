@@ -19,6 +19,7 @@ public class Hyperspace {
         fal.setCenter(teleportationPoint);
     }
 
+
     public Point hyperJump(Falcon fal){
         return fal.getCenter();
     }

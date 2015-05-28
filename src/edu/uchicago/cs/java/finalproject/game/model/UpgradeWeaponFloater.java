@@ -55,7 +55,7 @@ public class UpgradeWeaponFloater extends NewShipFloater {
         setExpire(500);
         setRadius(60);
 
-        setColor(Color.CYAN);
+        setColor(Color.GREEN);
     }
 
 

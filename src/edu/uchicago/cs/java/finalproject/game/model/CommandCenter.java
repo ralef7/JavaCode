@@ -11,11 +11,13 @@ public class CommandCenter {
 
 	private static int nNumFalcon;
 	private static int nLevel;
+	private static int shieldLevel;
 	private static long lScore;
 	private static Falcon falShip;
 	private static Debris debris;
 	private static boolean bPlaying;
 	private static boolean bPaused;
+	private static boolean shieldActive;
 	
 	// These ArrayLists are thread-safe
 	public static CopyOnWriteArrayList<Movable> movDebris = new CopyOnWriteArrayList<Movable>();
@@ -31,7 +33,9 @@ public class CommandCenter {
 		setLevel(1);
 		setScore(0);
 		setNumFalcons(3);
+		setShieldLevel(0);
 		spawnFalcon(true);
+		setOwnShield(false);
 	}
 	
 	// The parameter is true if this is for the beginning of the game, otherwise false
@@ -137,6 +141,13 @@ public class CommandCenter {
 		return movFloaters;
 	}
 
+	public static int getShieldLevel()  {return shieldLevel;}
+
+	public static void setShieldLevel(int n) {n = shieldLevel;}
+
+	public static void setOwnShield(boolean shield) {shield = shieldActive;}
+
+	public static boolean getOwnShield() {return shieldActive;}
 
 	
 	

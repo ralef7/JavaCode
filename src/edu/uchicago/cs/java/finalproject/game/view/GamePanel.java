@@ -75,7 +75,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		if (EnhancedCommandCenter.getHighScore() != 0) {
 			g.drawString("HIGH SCORE :  " + EnhancedCommandCenter.getHighScore(), nFontWidth, nFontHeight+20);
 		} else {
-			g.drawString("NO HIGH SCORE", nFontWidth, nFontHeight+15);
+			g.drawString("NO HIGH SCORE", nFontWidth, nFontHeight+20);
 		}
 	}
 
@@ -84,6 +84,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		 g.setFont(fnt);
 		 g.drawString("LEVEL: " + CommandCenter.getLevel(), nFontWidth, nFontHeight + 40);
 	 }
+
 	
 	@SuppressWarnings("unchecked")
 	public void update(Graphics g) {

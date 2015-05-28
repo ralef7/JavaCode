@@ -36,6 +36,7 @@ public class Game implements Runnable, KeyListener {
 	private boolean bMuted = true;
 	UFO ufo = new UFO();
 	boolean ownSpecialWeapon = false;
+	private int shieldPower;
 
 	
 
@@ -61,6 +62,7 @@ public class Game implements Runnable, KeyListener {
 	private static final int SPAWN_NEW_SHIP_FLOATER = 1200;
 	private static final int SPAWN_WEAPONS_UPGRADE = 1200;
 	private static final int SPAWN_NEW_SHIP_UFO = 1200;
+	private static final int SPAWN_NEW_SHIELD_FLOATER = 1200;
 
 
 
@@ -120,6 +122,7 @@ public class Game implements Runnable, KeyListener {
 			spawnNewShipFloater();
 			spawnUpgradeWeaponFloater();
 			spawnUFO();
+			spawnNewShieldFloater();
 			gmpPanel.update(gmpPanel.getGraphics()); // update takes the graphics context we must 
 														// surround the sleep() in a try/catch block
 														// this simply controls delay time between 
@@ -182,8 +185,20 @@ public class Game implements Runnable, KeyListener {
 
 					//falcon
 					if ((movFriend instanceof Falcon) ){
-						if (!CommandCenter.getFalcon().getProtected()){
+						 if (CommandCenter.getFalcon().getOwnShield())
+						 {
+							 shieldPower -= 1;
+							 if (shieldPower <= 0){
+								 CommandCenter.getFalcon().setOwnShield(false);
+							 }
+							 killFoe(movFoe);
+							 for (int i = 0; i < 50; i++) {
+								 CommandCenter.movDebris.add(new Debris((Sprite) movFoe, movFoe.getCenter(), movFoe.getCenter()));
+							 }
+						 }
+						 if (!CommandCenter.getFalcon().getProtected() && !CommandCenter.getFalcon().getOwnShield()){
 							tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
+							ownSpecialWeapon = false;
 							for (int i = 0; i < 50; i++){
 								CommandCenter.movDebris.add(new Debris((Sprite)movFriend, movFriend.getCenter(), movFriend.getCenter()));
 							}
@@ -230,15 +245,28 @@ public class Game implements Runnable, KeyListener {
 					tupMarkForRemovals.add(new Tuple(CommandCenter.movFloaters, movFloater));
 					totalScore += 10;
 					CommandCenter.setScore(totalScore);
-					if (movFloater instanceof NewShipFloater)
-					{
-						CommandCenter.setNumFalcons(CommandCenter.getNumFalcons() + 1);
-					}
+					EnhancedCommandCenter.setHighScore();
+//					if (movFloater instanceof NewShipFloater)
+//					{
+//
+//					}
 					if (movFloater instanceof UpgradeWeaponFloater)
 					{
 						ownSpecialWeapon = true;
+						Sound.playSound("pacman_eatghost.wav");
+						break;
 					}
-					EnhancedCommandCenter.setHighScore();
+					else if (movFloater instanceof NewShieldFloater)
+					{
+						CommandCenter.getFalcon().setShield(3);
+						shieldPower = CommandCenter.getFalcon().getShield();
+						CommandCenter.getFalcon().setOwnShield(true);
+						Sound.playSound("pacman_eatghost.wav");
+						break;
+					}
+					else {
+						CommandCenter.setNumFalcons(CommandCenter.getNumFalcons() + 1);
+					}
 					Sound.playSound("pacman_eatghost.wav");
 	
 				}//end if 
@@ -320,6 +348,13 @@ public class Game implements Runnable, KeyListener {
 		}
 	}
 
+	private void spawnNewShieldFloater(){
+		if (nTick % (SPAWN_NEW_SHIELD_FLOATER - nLevel * 100) == 0){
+			CommandCenter.movFloaters.add(new NewShieldFloater());
+
+		}
+	}
+
 	private void spawnUpgradeWeaponFloater(){
 		//this weapon should be given early in the game, and then occassionally thereafter
 		if (nTick % (SPAWN_WEAPONS_UPGRADE - nLevel * 100) == 0){
@@ -352,8 +387,8 @@ public class Game implements Runnable, KeyListener {
 	private void spawnUFO(){
 		if (nTick % (SPAWN_NEW_SHIP_UFO - nLevel) == 0) {
 			CommandCenter.movFoes.add(ufo);
-			if (getTick() % 5 == 0){
-				CommandCenter.movFoes.add(new BulletUFO(ufo));
+			if (getTick() % 15 == 0){
+				CommandCenter.movFoes.add(new BulletUFO(ufo, 0));
 			}
 
 		}
@@ -371,8 +406,6 @@ public class Game implements Runnable, KeyListener {
 		}
 		
 		return bAsteroidFree;
-
-		
 	}
 	
 	private void checkNewLevel(){
@@ -389,8 +422,6 @@ public class Game implements Runnable, KeyListener {
 
 		}
 	}
-	
-	
 	
 
 	// Varargs for stopping looping-music-clips
@@ -437,6 +468,12 @@ public class Game implements Runnable, KeyListener {
 			case RIGHT:
 				fal.rotateRight();
 				break;
+			case CHEAT:
+				ownSpecialWeapon = true;
+				CommandCenter.getFalcon().setOwnShield(true);
+				CommandCenter.getFalcon().setShield(5);
+				CommandCenter.getFalcon().setOwnShield(true);
+				shieldPower = CommandCenter.getFalcon().getShield();
 
 			// possible future use
 			// case KILL:
@@ -457,8 +494,8 @@ public class Game implements Runnable, KeyListener {
 
 		if (fal != null) {
 			switch (nKey) {
-			case CHEAT:
-				ownSpecialWeapon = true;
+
+
 			case FIRE:
 				if (ownSpecialWeapon == false)
 				{
@@ -473,9 +510,10 @@ public class Game implements Runnable, KeyListener {
 				}
 				if (CommandCenter.movFoes.contains(ufo))
 				{
-					CommandCenter.movFoes.add(new BulletUFO(ufo));
-					CommandCenter.movFoes.add(new BulletUFO(ufo));
-					CommandCenter.movFoes.add(new BulletUFO(ufo));
+					CommandCenter.movFoes.add(new BulletUFO(ufo, 90));
+					CommandCenter.movFoes.add(new BulletUFO(ufo, 270));
+					CommandCenter.movFoes.add(new BulletUFO(ufo, 0));
+
 				}
 
 

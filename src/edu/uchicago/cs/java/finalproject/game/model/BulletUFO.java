@@ -14,17 +14,17 @@ public class BulletUFO extends Sprite {
 
     private static Random R;
 
-    public BulletUFO(UFO enemyUFO){
+    public BulletUFO(UFO enemyUFO, int angleShot){
         super();
         R = new Random();
         setColor(Color.RED);
 
         ArrayList<Point> points = new ArrayList<>();
 
-        points.add(new Point(0,3));
+        points.add(new Point(0,1));
         points.add(new Point(1,-1));
-        points.add(new Point(0,-2));
-        points.add(new Point(-1,-1));
+        points.add(new Point(0,-1));
+        points.add(new Point(0,0));
 
         assignPolarPoints(points);
 
@@ -32,8 +32,8 @@ public class BulletUFO extends Sprite {
         setRadius(10);
         int spreadOrientationAdjuster = R.nextInt(360);
 
-        setDeltaX(enemyUFO.getDeltaX() + Math.cos(Math.toRadians(enemyUFO.getOrientation()+spreadOrientationAdjuster)) * UFO_FIRE_POWER);
-        setDeltaY(enemyUFO.getDeltaY() + Math.sin(Math.toRadians(enemyUFO.getOrientation()+spreadOrientationAdjuster)) * UFO_FIRE_POWER);
+        setDeltaX(enemyUFO.getDeltaX() + Math.cos(Math.toRadians(enemyUFO.getOrientation()+ angleShot)) * UFO_FIRE_POWER);
+        setDeltaY(enemyUFO.getDeltaY() + Math.sin(Math.toRadians(enemyUFO.getOrientation()+ angleShot)) * UFO_FIRE_POWER);
         setCenter(enemyUFO.getCenter());
 
         setOrientation(enemyUFO.getOrientation());

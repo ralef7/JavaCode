@@ -26,7 +26,7 @@ public class Falcon extends Sprite {
 	private boolean bTurningRight = false;
 	private boolean bTurningLeft = false;
 	
-	private int nShield;
+	private int nShield = 0;
 			
 	private final double[] FLAME = { 23 * Math.PI / 24 + Math.PI / 2,
 			Math.PI + Math.PI / 2, 25 * Math.PI / 24 + Math.PI / 2 };
@@ -43,7 +43,7 @@ public class Falcon extends Sprite {
 	
 	public Falcon() {
 		super();
-
+		nShield = 0;
 		ArrayList<Point> pntCs = new ArrayList<Point>();
 		
 		// top of ship
@@ -162,17 +162,24 @@ public class Falcon extends Sprite {
 					getFadeValue(), 175), getFadeValue());
 		}
 
-//		//shield on
-//		if (bShield && nShield > 0) {
-//
-//			setShield(getShield() - 1);
-//
-//			g.setColor(Color.cyan);
-//			g.drawOval(getCenter().x - getRadius(),
-//					getCenter().y - getRadius(), getRadius() * 2,
-//					getRadius() * 2);
-//
-//		} //end if shield
+		//shield on
+		while (bShield && nShield > 0) {
+
+			setShield(getShield() - 1);
+			if (getShield() >= 4) {
+				g.setColor(Color.cyan);
+			}
+			else if (getShield() == 2){
+				g.setColor(Color.ORANGE);
+			}
+			else{
+				g.setColor(Color.RED);
+			}
+			g.drawOval(getCenter().x - getRadius(),
+					getCenter().y - getRadius(), getRadius() * 2,
+					getRadius() * 2);
+
+		} //end if shield
 
 		//thrusting
 		if (bFlame) {
@@ -252,6 +259,8 @@ public class Falcon extends Sprite {
 
 	public boolean getProtected() {return bProtected;}
 	public void setShield(int n) {nShield = n;}
-	public int getShield() {return nShield;}	
+	public int getShield() {return nShield;}
+	public void setOwnShield(boolean covered) {bShield = covered;}
+	public boolean getOwnShield(){return bShield;}
 	
 } //end class
