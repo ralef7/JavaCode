@@ -1,5 +1,7 @@
 package edu.uchicago.cs.java.finalproject.game.model;
 
+import edu.uchicago.cs.java.finalproject.controller.Game;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -23,7 +25,34 @@ public class UpgradeWeaponFloater extends NewShipFloater {
 
         assignPolarPoints(pntCs);
 
-        setExpire(200);
+        //set random DekltaX slightly different from other floaters
+        int nX = Game.R.nextInt(18);
+        if (nX % 2 == 0){
+            setDeltaX(nX);
+        }
+        else{
+            setDeltaX(-nX);
+        }
+
+        //set random DeltaY slightly differnt from other floaters
+        int nY = Game.R.nextInt(18);
+        if (nY % 2 == 0){
+            setDeltaX(nY);
+        }
+        else{
+            setDeltaX(-nY);
+        }
+
+        //set random spin, again slightly different params than other floaters
+        int nS = Game.R.nextInt(10);
+        if (nS % 2 == 0){
+            setSpin(nS);
+        }
+        else{
+            setSpin(-nS);
+        }
+
+        setExpire(500);
         setRadius(60);
 
         setColor(Color.CYAN);

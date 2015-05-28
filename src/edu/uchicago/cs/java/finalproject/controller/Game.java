@@ -47,6 +47,7 @@ public class Game implements Runnable, KeyListener {
 			START = 83, // s key
 			FIRE = 32, // space key
 			MUTE = 77, // m-key mute
+			CHEAT = 192, // `
 			HYPERSPACE = 10, //enter to go to hyperspace
 	// for possible future use
 	// HYPER = 68, 					// d key
@@ -456,6 +457,8 @@ public class Game implements Runnable, KeyListener {
 
 		if (fal != null) {
 			switch (nKey) {
+			case CHEAT:
+				ownSpecialWeapon = true;
 			case FIRE:
 				if (ownSpecialWeapon == false)
 				{
@@ -463,10 +466,10 @@ public class Game implements Runnable, KeyListener {
 				}
 				else
 				{
-					CommandCenter.movFriends.add(new SpecialBullet(fal));
-					CommandCenter.movFriends.add(new SpecialBullet(fal));
-					CommandCenter.movFriends.add(new SpecialBullet(fal));
-					CommandCenter.movFriends.add(new SpecialBullet(fal));
+					CommandCenter.movFriends.add(new SpecialBullet(fal, 320, 320));
+					CommandCenter.movFriends.add(new SpecialBullet(fal, 340, 340));
+					CommandCenter.movFriends.add(new SpecialBullet(fal, 20, 20));
+					CommandCenter.movFriends.add(new SpecialBullet(fal, 40, 40));
 				}
 				if (CommandCenter.movFoes.contains(ufo))
 				{

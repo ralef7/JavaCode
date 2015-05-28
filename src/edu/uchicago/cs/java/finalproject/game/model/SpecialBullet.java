@@ -10,12 +10,12 @@ import java.util.Random;
  * Created by Robert on 5/27/2015.
  */
 public class SpecialBullet extends Bullet {
-    private final double UPGRADE_FIRE_POWER = 20.0;
+    private double firePower = 20.0;
     private Random unknownArc;
     int xAdapter;
     int yAdapter;
 
-    public SpecialBullet (Falcon fal){
+    public SpecialBullet (Falcon fal, int xAdpt, int yAdpt){
 
         super(fal);
         unknownArc = new Random();
@@ -23,8 +23,7 @@ public class SpecialBullet extends Bullet {
 
 
         //Will enable implementation of spreadshot on our upgraded weapon
-        xAdapter = unknownArc.nextInt(45);
-        yAdapter = unknownArc.nextInt(45);
+
 
         ArrayList<Point> points = new ArrayList<>();
 
@@ -40,13 +39,24 @@ public class SpecialBullet extends Bullet {
         setRadius(6);
 
         setDeltaX(fal.getDeltaX() +
-                Math.cos(Math.toRadians(fal.getOrientation()+xAdapter)) * UPGRADE_FIRE_POWER);
+                Math.cos(Math.toRadians(fal.getOrientation()+xAdpt)) * getFirePower());
         setDeltaY(fal.getDeltaY() + yAdapter +
-                Math.sin(Math.toRadians(fal.getOrientation()+yAdapter)) * UPGRADE_FIRE_POWER);
+                Math.sin(Math.toRadians(fal.getOrientation()+yAdpt)) * getFirePower());
         setCenter(fal.getCenter());
 
-
-
-
     }
+
+    public void setFirePower(){
+        while (firePower < 100){
+            if (CommandCenter.getScore() % 100 == 0){
+                firePower += 5;
+            }
+        }
+    }
+
+    public double getFirePower(){
+        return firePower;
+    }
+
+
 }
