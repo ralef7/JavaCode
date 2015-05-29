@@ -1,6 +1,8 @@
 package edu.uchicago.cs.java.finalproject.game.model;
 
 
+import java.awt.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import edu.uchicago.cs.java.finalproject.controller.Game;
@@ -41,7 +43,52 @@ public class Asteroid extends Sprite {
 			nDY = -nDY;
 		setDeltaY(nDY);
 			
-		assignRandomShape();
+	//	assignRandomShape();
+		ArrayList<Point> points = new ArrayList<>();
+		points.add(new Point(0,3));
+		points.add(new Point(-2,0));
+		points.add(new Point(-2,-1));
+		points.add(new Point(-6,-1));
+		points.add(new Point(-10,-5));
+		points.add(new Point(-6,-1));
+		points.add(new Point(-10,-5));
+		points.add(new Point(-6,-1));
+		points.add(new Point(-2,-1));
+		points.add(new Point(-2, -3));
+		points.add(new Point(-6,-3));
+		points.add(new Point(-11,2));
+		points.add(new Point(-6,-3));
+		points.add(new Point(-2, -3));
+		points.add(new Point(-1, -4));
+		points.add(new Point(-5, -5));
+		points.add(new Point(-10, -2));
+		points.add(new Point(-5, -5));
+		points.add(new Point(-1,-4));
+		points.add(new Point(0, -5));
+		points.add(new Point(-1, -6));
+		points.add(new Point(-1, -7));
+		points.add(new Point(1, -7));
+		points.add(new Point(1, -6));
+		points.add(new Point(0, -5));
+		points.add(new Point(1, -4));
+		points.add(new Point(5, -5));
+		points.add(new Point(10, -2));
+		points.add(new Point(5, -5));
+		points.add(new Point(1, -4));
+		points.add(new Point(2, -3));
+		points.add( new Point(6, -3));
+		points.add(new Point(11, 2));
+		points.add(new Point(6, -3));
+		points.add(new Point(2, -3));
+		points.add(new Point(2, -1));
+		points.add(new Point (6, -1));
+		points.add(new Point(9, 5));
+		points.add(new Point(6, -1));
+		points.add(new Point(2, -1));
+		points.add(new Point(2, 0));
+		points.add(new Point(0,3));
+
+		assignPolarPoints(points);
 		
 		//an nSize of zero is a big asteroid
 		//a nSize of 1 or 2 is med or small asteroid respectively
@@ -83,7 +130,53 @@ public class Asteroid extends Sprite {
 			nDY = -nDY;
 		setDeltaY(nDY);
 			
-		assignRandomShape();
+		//assignRandomShape();
+		ArrayList<Point> points = new ArrayList<>();
+		points.add(new Point(0,3));
+		points.add(new Point(-2,0));
+		points.add(new Point(-2,-1));
+		points.add(new Point(-6,-1));
+		points.add(new Point(-10,-5));
+		points.add(new Point(-6,-1));
+		points.add(new Point(-10,-5));
+		points.add(new Point(-6,-1));
+		points.add(new Point(-2,-1));
+		points.add(new Point(-2, -3));
+		points.add(new Point(-6,-3));
+		points.add(new Point(-11,2));
+		points.add(new Point(-6,-3));
+		points.add(new Point(-2, -3));
+		points.add(new Point(-1, -4));
+		points.add(new Point(-5, -5));
+		points.add(new Point(-10, -2));
+		points.add(new Point(-5, -5));
+		points.add(new Point(-1,-4));
+		points.add(new Point(0, -5));
+		points.add(new Point(-1, -6));
+		points.add(new Point(-1, -7));
+		points.add(new Point(1, -7));
+		points.add(new Point(1, -6));
+		points.add(new Point(0, -5));
+		points.add(new Point(1, -4));
+		points.add(new Point(5, -5));
+		points.add(new Point(10, -2));
+		points.add(new Point(5, -5));
+		points.add(new Point(1, -4));
+		points.add(new Point(2, -3));
+		points.add( new Point(6, -3));
+		points.add(new Point(11, 2));
+		points.add(new Point(6, -3));
+		points.add(new Point(2, -3));
+		points.add(new Point(2, -1));
+		points.add(new Point (6, -1));
+		points.add(new Point(9, 5));
+		points.add(new Point(6, -1));
+		points.add(new Point(2, -1));
+		points.add(new Point(2, 0));
+		points.add(new Point(0,3));
+
+		setColor(Color.yellow);
+		assignPolarPoints(points);
 		
 		//an nSize of zero is a big asteroid
 		//a nSize of 1 or 2 is med or small asteroid respectively
