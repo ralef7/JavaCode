@@ -49,9 +49,7 @@ public class Asteroid extends Sprite {
 		points.add(new Point(-2,0));
 		points.add(new Point(-2,-1));
 		points.add(new Point(-6,-1));
-		points.add(new Point(-10,-5));
-		points.add(new Point(-6,-1));
-		points.add(new Point(-10,-5));
+		points.add(new Point(-9,5));
 		points.add(new Point(-6,-1));
 		points.add(new Point(-2,-1));
 		points.add(new Point(-2, -3));
@@ -136,9 +134,7 @@ public class Asteroid extends Sprite {
 		points.add(new Point(-2,0));
 		points.add(new Point(-2,-1));
 		points.add(new Point(-6,-1));
-		points.add(new Point(-10,-5));
-		points.add(new Point(-6,-1));
-		points.add(new Point(-10,-5));
+		points.add(new Point(-9, 5));
 		points.add(new Point(-6,-1));
 		points.add(new Point(-2,-1));
 		points.add(new Point(-2, -3));

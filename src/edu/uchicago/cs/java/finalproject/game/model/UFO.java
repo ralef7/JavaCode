@@ -14,7 +14,7 @@ public class UFO extends Sprite {
 
 
     //radius of our UFO
-    private final int RAD = 30;
+    private final int RAD = 50;
     private int nSpin;
     private final int RECKLESS_MOVER = 10;
 
@@ -27,29 +27,78 @@ public class UFO extends Sprite {
         ArrayList<Point> pntCs = new ArrayList<Point>();
 
         // top of ship
-        pntCs.add(new Point(0, 18));
-
-        //right points
-        pntCs.add(new Point(3, 3));
-        pntCs.add(new Point(12, 0));
-        pntCs.add(new Point(13, -2));
-        pntCs.add(new Point(13, -4));
-        pntCs.add(new Point(11, -2));
-        pntCs.add(new Point(4, -3));
-        pntCs.add(new Point(2, -10));
-        pntCs.add(new Point(4, -12));
-        pntCs.add(new Point(2, -13));
-
-        //left points
-        pntCs.add(new Point(-2, -13));
-        pntCs.add(new Point(-4, -12));
-        pntCs.add(new Point(-2, -10));
-        pntCs.add(new Point(-4, -3));
-        pntCs.add(new Point(-11, -2));
-        pntCs.add(new Point(-13, -4));
-        pntCs.add(new Point(-13, -2));
-        pntCs.add(new Point(-12, 0));
-        pntCs.add(new Point(-3, 3));
+        pntCs.add(new Point(-1,13));
+        pntCs.add(new Point(-1,8));
+        pntCs.add(new Point(-3,7));
+        pntCs.add(new Point(-2,6));
+        pntCs.add(new Point(0,7));
+        pntCs.add(new Point(0,4));
+        pntCs.add(new Point(-1,3));
+        pntCs.add(new Point(-2,1));
+        pntCs.add(new Point(-3,-1));
+        pntCs.add(new Point(-3,-2));
+        pntCs.add(new Point(-1,-2));
+        pntCs.add(new Point(-1,-3));
+        pntCs.add(new Point(-4,-4));
+        pntCs.add(new Point(-5,-3));
+        pntCs.add(new Point(-7,-4));
+        pntCs.add(new Point(-13, -3));
+        pntCs.add(new Point(-14, -5));
+        pntCs.add(new Point(-13,-8));
+        pntCs.add(new Point(-12,-10));
+        pntCs.add(new Point(-7, -5));
+        pntCs.add(new Point(-5,-6));
+        pntCs.add(new Point(-4, -5));
+        pntCs.add(new Point(-1, -4));
+        pntCs.add(new Point(0,-6));
+        pntCs.add(new Point(-2, -7));
+        pntCs.add(new Point(-3, -6));
+        pntCs.add(new Point(-5, -10));
+        pntCs.add(new Point(-1,  -8));
+        pntCs.add(new Point(3, -7));
+        pntCs.add(new Point(5, -6));
+        pntCs.add(new Point(4, -4));
+        pntCs.add(new Point(7, -3));
+        pntCs.add(new Point(13, -1));
+        pntCs.add(new Point(13, 0));
+        pntCs.add(new Point(10, -1));
+        pntCs.add(new Point(7, -1));
+        pntCs.add(new Point(5, 0));
+        pntCs.add(new Point(4, 1));
+        pntCs.add(new Point(4, 3));
+        pntCs.add(new Point(5,3));
+        pntCs.add(new Point(4,4));
+        pntCs.add(new Point(5,4));
+        pntCs.add(new Point(6,5));
+        pntCs.add(new Point(4,6));
+        pntCs.add(new Point(3,8));
+        pntCs.add(new Point(5,9));
+        pntCs.add(new Point(4,10));
+        pntCs.add(new Point(2, 9));
+        pntCs.add(new Point(-1, 13));
+//        pntCs.add(new Point(0, 18));
+//
+//        //right points
+//        pntCs.add(new Point(3, 3));
+//        pntCs.add(new Point(12, 0));
+//        pntCs.add(new Point(13, -2));
+//        pntCs.add(new Point(13, -4));
+//        pntCs.add(new Point(11, -2));
+//        pntCs.add(new Point(4, -3));
+//        pntCs.add(new Point(2, -10));
+//        pntCs.add(new Point(4, -12));
+//        pntCs.add(new Point(2, -13));
+//
+//        //left points
+//        pntCs.add(new Point(-2, -13));
+//        pntCs.add(new Point(-4, -12));
+//        pntCs.add(new Point(-2, -10));
+//        pntCs.add(new Point(-4, -3));
+//        pntCs.add(new Point(-11, -2));
+//        pntCs.add(new Point(-13, -4));
+//        pntCs.add(new Point(-13, -2));
+//        pntCs.add(new Point(-12, 0));
+//        pntCs.add(new Point(-3, 3));
 
         assignPolarPoints(pntCs);
 
