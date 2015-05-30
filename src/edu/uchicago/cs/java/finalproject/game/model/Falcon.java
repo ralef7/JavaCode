@@ -163,9 +163,9 @@ public class Falcon extends Sprite {
 		}
 
 		//shield on
-		while (bShield && nShield > 0) {
+		if (bShield && nShield > 0) {
 
-			setShield(getShield() - 1);
+
 			if (getShield() >= 4) {
 				g.setColor(Color.cyan);
 			}

@@ -385,7 +385,7 @@ public class Game implements Runnable, KeyListener {
 		}
 	}
 	private void spawnUFO(){
-		if (nTick % (SPAWN_NEW_SHIP_UFO - nLevel) == 0) {
+		if (nTick % (SPAWN_NEW_SHIP_UFO - nLevel * 100) == 0) {
 			CommandCenter.movFoes.add(ufo);
 			if (getTick() % 15 == 0){
 				CommandCenter.movFoes.add(new BulletUFO(ufo, 0));
