@@ -163,7 +163,7 @@ public class Falcon extends Sprite {
 		}
 
 		//shield on
-		if (bShield && nShield > 0) {
+		if (getOwnShield() && nShield > 0) {
 
 
 			if (getShield() >= 4) {

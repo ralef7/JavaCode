@@ -14,12 +14,12 @@ public class UFO extends Sprite {
 
 
     //radius of our UFO
-    private final int RAD = 50;
+    private final int RAD = 120;
     private int nSpin;
     private final int RECKLESS_MOVER = 10;
 
 
-    public UFO(){
+    public UFO(int size){
 
         //call Sprite constructor
         super();
@@ -133,7 +133,7 @@ public class UFO extends Sprite {
             nDY = -nDY;
         setDeltaY(nDY);
 
-        setRadius(RAD);
+        setRadius(RAD / size);
 
         setExpire(250);
     }

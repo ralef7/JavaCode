@@ -34,9 +34,12 @@ public class Game implements Runnable, KeyListener {
 	private ArrayList<Tuple> tupMarkForRemovals;
 	private ArrayList<Tuple> tupMarkForAdds;
 	private boolean bMuted = true;
-	UFO ufo = new UFO();
+	UFO ufo = new UFO(2);
 	boolean ownSpecialWeapon = false;
+	boolean killMode = false;
+	boolean nuke = false;
 	private int shieldPower;
+	private int nukeNum = 0;
 
 	
 
@@ -49,7 +52,9 @@ public class Game implements Runnable, KeyListener {
 			FIRE = 32, // space key
 			MUTE = 77, // m-key mute
 			CHEAT = 192, // `
-			HYPERSPACE = 10, //enter to go to hyperspace
+			KILLMODE = 75, //k
+     		NUKE = 10, //enter
+//			HYPERSPACE = 10, //enter to go to hyperspace
 	// for possible future use
 	// HYPER = 68, 					// d key
 	// SHIELD = 65, 				// a key arrow
@@ -208,7 +213,12 @@ public class Game implements Runnable, KeyListener {
 
 						}
 					}
-					//not the falcon
+					//not the falcon   //TODO: add nuke
+					else if(movFriend instanceof Nuke) {
+						tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
+					    killFoe(movFoe);
+						CommandCenter.movFriends.add(new NukeExplosion((Nuke)movFriend));
+					}
 					else {
 						tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
 
@@ -250,6 +260,11 @@ public class Game implements Runnable, KeyListener {
 //					{
 //
 //					}
+					if (movFloater instanceof NewNukeFloater)
+					{
+						nuke = true;
+						nukeNum = 2;
+					}
 					if (movFloater instanceof UpgradeWeaponFloater)
 					{
 						ownSpecialWeapon = true;
@@ -299,6 +314,11 @@ public class Game implements Runnable, KeyListener {
 				//spawn two medium Asteroids
 				tupMarkForAdds.add(new Tuple(CommandCenter.movFoes,new Asteroid(astExploded)));
 				tupMarkForAdds.add(new Tuple(CommandCenter.movFoes,new Asteroid(astExploded)));
+				//if kill mode is on, killing spiders will draw the ire of small witches. They don't shoot though. only
+				//the big ones do.
+				if (killMode == true){
+					tupMarkForAdds.add(new Tuple(CommandCenter.movFoes, new UFO(3)));
+				}
 				CommandCenter.setScore(totalScore += 100);
 				EnhancedCommandCenter.setHighScore();
 				
@@ -474,6 +494,22 @@ public class Game implements Runnable, KeyListener {
 				CommandCenter.getFalcon().setShield(5);
 				CommandCenter.getFalcon().setOwnShield(true);
 				shieldPower = CommandCenter.getFalcon().getShield();
+				nukeNum = 1;
+				nuke = true;
+			case KILLMODE:
+				if (killMode == false)
+				killMode = true;
+				else
+				killMode = false;
+				break;
+			case NUKE:
+				if (nuke == true && nukeNum > 0)
+				{
+					CommandCenter.movFriends.add(new Nuke(fal));
+					nukeNum -= 1;
+				}
+				break;
+
 
 			// possible future use
 			// case KILL:
@@ -536,7 +572,6 @@ public class Game implements Runnable, KeyListener {
 				fal.thrustOff();
 				clpThrust.stop();
 				break;
-				
 			case MUTE:
 				if (!bMuted){
 					stopLoopingSounds(clpMusicBackground);

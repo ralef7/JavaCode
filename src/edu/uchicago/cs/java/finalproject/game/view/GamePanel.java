@@ -191,7 +191,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 	// This method draws some text to the middle of the screen before/after a game
 	private void displayTextOnScreen() {
 
-		strDisplay = "GAME OVER";
+		strDisplay = "SPACE SPIDERS 3000!!!!";
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4);
 
@@ -229,10 +229,15 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 280);
 
-		strDisplay = "'Enter' for Hyperspace";
+		strDisplay = "''' for CHEAT";
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 320);
+		strDisplay = "'k' for kill mode";
+		grpOff.drawString(strDisplay,
+				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
+						+ nFontHeight + 360);
+
 	}
 	
 	public GameFrame getFrm() {return this.gmf;}
