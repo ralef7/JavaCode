@@ -230,7 +230,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 280);
 
-		strDisplay = "''' for CHEAT (special weapon, special shields, 1 nuke)";
+		strDisplay = "' ' ' for CHEAT (special weapon, special shields, 1 nuke)";
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 320);
@@ -238,6 +238,10 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 360);
+		strDisplay = "GREEN floater for weapon, BLUE for extra life, YELLOW for nukes, and CYAN for shields";
+		grpOff.drawString(strDisplay,
+				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
+						+ nFontHeight + 400);
 
 	}
 	
