@@ -53,4 +53,16 @@ public class NukeExplosion extends Sprite{
         else
             setExpire(getExpire() - 1);
     }
-}
+ public void draw(Graphics g){
+
+
+         g.fillOval(getCenter().x - getRadius(),
+                 getCenter().y - getRadius(), getRadius() * 2,
+                 getRadius() * 2);
+        g.setColor(Color.ORANGE);
+
+
+     } //end if shield
+ }
+
+

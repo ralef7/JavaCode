@@ -68,6 +68,7 @@ public class Game implements Runnable, KeyListener {
 	private static final int SPAWN_WEAPONS_UPGRADE = 1200;
 	private static final int SPAWN_NEW_SHIP_UFO = 1200;
 	private static final int SPAWN_NEW_SHIELD_FLOATER = 1200;
+	private static final int SPAWN_NEW_NUKE_FLOATER = 1100;
 
 
 
@@ -128,6 +129,7 @@ public class Game implements Runnable, KeyListener {
 			spawnUpgradeWeaponFloater();
 			spawnUFO();
 			spawnNewShieldFloater();
+			spawnNewNukeFloater();
 			gmpPanel.update(gmpPanel.getGraphics()); // update takes the graphics context we must 
 														// surround the sleep() in a try/catch block
 														// this simply controls delay time between 
@@ -279,6 +281,10 @@ public class Game implements Runnable, KeyListener {
 						Sound.playSound("pacman_eatghost.wav");
 						break;
 					}
+					else if (movFloater instanceof NewNukeFloater){
+						nukeNum += 1;
+						nuke = true;
+					}
 					else {
 						CommandCenter.setNumFalcons(CommandCenter.getNumFalcons() + 1);
 					}
@@ -365,6 +371,13 @@ public class Game implements Runnable, KeyListener {
 		//the higher the level the more frequent the appearance
 		if (nTick % (SPAWN_NEW_SHIP_FLOATER - nLevel * 7) == 0) {
 			CommandCenter.movFloaters.add(new NewShipFloater());
+		}
+	}
+	private void spawnNewNukeFloater(){
+		//these become way move valuable deeper into the game.  Piece of advice, just use the cheat code and get one whenever
+		// you want.
+		if (nTick % (SPAWN_NEW_NUKE_FLOATER - nLevel * 15) == 0){
+			CommandCenter.movFloaters.add(new NewNukeFloater());
 		}
 	}
 
@@ -496,6 +509,7 @@ public class Game implements Runnable, KeyListener {
 				shieldPower = CommandCenter.getFalcon().getShield();
 				nukeNum = 1;
 				nuke = true;
+				break;
 			case KILLMODE:
 				if (killMode == false)
 				killMode = true;
@@ -507,6 +521,7 @@ public class Game implements Runnable, KeyListener {
 				{
 					CommandCenter.movFriends.add(new Nuke(fal));
 					nukeNum -= 1;
+					break;
 				}
 				break;
 
