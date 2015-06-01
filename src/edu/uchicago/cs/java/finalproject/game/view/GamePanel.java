@@ -220,7 +220,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 200);
-		strDisplay = "left pinkie on 'A' for Shield";
+		strDisplay = "Shield is automatic";
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 240);
@@ -230,7 +230,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 280);
 
-		strDisplay = "''' for CHEAT";
+		strDisplay = "''' for CHEAT (special weapon, special shields, 1 nuke)";
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 320);

@@ -408,6 +408,7 @@ public class Game implements Runnable, KeyListener {
 		CommandCenter.clearAll();
 		CommandCenter.initGame();
 		CommandCenter.setLevel(0);
+		ownSpecialWeapon = false;
 		EnhancedCommandCenter.setHighScore();
 		totalScore = 0;
 		CommandCenter.setPlaying(true);
