@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import edu.uchicago.cs.java.finalproject.controller.Game;
 
+//Given.  I just made this increment your lives by 1 if you run into it.
 public class NewShipFloater extends Sprite {
 
 

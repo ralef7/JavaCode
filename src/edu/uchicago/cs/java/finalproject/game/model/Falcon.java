@@ -7,7 +7,7 @@ import java.util.Map;
 
 import edu.uchicago.cs.java.finalproject.controller.Game;
 
-
+//Pretty much the same basic Falcon class. Only, I implemented code to draw a shield around the falcon when appropriate.
 public class Falcon extends Sprite {
 
 	// ==============================================================
@@ -172,7 +172,7 @@ public class Falcon extends Sprite {
 			else if (getShield() == 2){
 				g.setColor(Color.ORANGE);
 			}
-			else{
+			else if (getShield() == 1){
 				g.setColor(Color.RED);
 			}
 			g.drawOval(getCenter().x - getRadius(),

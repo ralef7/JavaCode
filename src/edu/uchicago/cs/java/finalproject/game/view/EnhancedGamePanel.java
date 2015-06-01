@@ -9,6 +9,10 @@ import java.awt.*;
 /**
  * Created by Robert on 5/23/2015.
  */
+//High score display.
+//Wrote this when I thought 100% of the code we submitted for this assignment had to come from extending the code base.
+//It's basic and a new feature so I kept it in its own class though it could be added to GamePanel if one wanted to
+//cut down classes.
 public class EnhancedGamePanel extends GamePanel{
     private Font highScoreFont = new Font("Times New Roman", Font.BOLD, 12);
     private int nFontWidth;

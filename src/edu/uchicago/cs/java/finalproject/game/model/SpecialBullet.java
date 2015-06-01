@@ -9,6 +9,7 @@ import java.util.Random;
 /**
  * Created by Robert on 5/27/2015.
  */
+//When you upgrade your weapon, you now fire new bullets.  It would not be fair to give spread shot the range that normal shot has.
 public class SpecialBullet extends Bullet {
     private double firePower = 20.0;
     private Random unknownArc;

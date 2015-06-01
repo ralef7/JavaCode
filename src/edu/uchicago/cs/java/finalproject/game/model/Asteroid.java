@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 import edu.uchicago.cs.java.finalproject.controller.Game;
 
+//Asteroid is now Spider.
 public class Asteroid extends Sprite {
 
 	

@@ -7,6 +7,8 @@ import java.util.Random;
 /**
  * Created by Robert on 5/31/2015.
  */
+//The nuke itself is basically a large, slow moving bullet.  It only becomes catastrophic when it explodes and releases
+//NukeExplosion.
 public class Nuke extends Bullet {
 
     private int EXPLOSION_RADIUS = 1200;

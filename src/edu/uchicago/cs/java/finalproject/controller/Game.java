@@ -196,10 +196,10 @@ public class Game implements Runnable, KeyListener {
 					if ((movFriend instanceof Falcon) ){
 						 if (CommandCenter.getFalcon().getOwnShield())
 						 {
-							 shieldPower -= 1;
-							 if (shieldPower <= 0){
+							 if (CommandCenter.getFalcon().getShield() == 0){
 								 CommandCenter.getFalcon().setOwnShield(false);
 							 }
+							 CommandCenter.getFalcon().setShield(CommandCenter.getFalcon().getShield()-1);
 							 killFoe(movFoe);
 							 for (int i = 0; i < 50; i++) {
 								 CommandCenter.movDebris.add(new Debris((Sprite) movFoe, movFoe.getCenter(), movFoe.getCenter()));
@@ -512,8 +512,6 @@ public class Game implements Runnable, KeyListener {
 				ownSpecialWeapon = true;
 				CommandCenter.getFalcon().setOwnShield(true);
 				CommandCenter.getFalcon().setShield(5);
-				CommandCenter.getFalcon().setOwnShield(true);
-				shieldPower = CommandCenter.getFalcon().getShield();
 				nukeNum = 1;
 				nuke = true;
 				break;

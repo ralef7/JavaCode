@@ -9,6 +9,7 @@ import java.util.Arrays;
 /**
  * Created by Robert on 5/23/2015.
  */
+//Extends asteroid.  Basically, debris is visible as 50 randomly scattered asteroids of radius 1.
 public class Debris extends Asteroid {
     private Color color;
 

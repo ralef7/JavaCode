@@ -7,6 +7,7 @@ import java.util.Random;
 /**
  * Created by Robert on 5/24/2015.
  */
+//The witch shoots red magic.  This class is titled BulletUFO because the witch was originally a UFO.
 public class BulletUFO extends Sprite {
 
     private final double UFO_FIRE_POWER = 35.0;

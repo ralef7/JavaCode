@@ -7,6 +7,8 @@ import java.util.Random;
 /**
  * Created by Robert on 5/31/2015.
  */
+//This explosion is more of a flash than a real, prolonged explosion.  I think it looks better in gameplay.
+//The explosion is designed to be a friend that wipes out the screen. best used when you have many tiny spiders to fight.
 public class NukeExplosion extends Sprite{
 
     private static Random R;

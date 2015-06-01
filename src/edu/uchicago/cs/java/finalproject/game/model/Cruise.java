@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import edu.uchicago.cs.java.finalproject.controller.Game;
 
+//Cruise missiles are available in the game, but I spent no time with them.
 public class Cruise extends Sprite {
 
 	private final double FIRE_POWER = 15.0;

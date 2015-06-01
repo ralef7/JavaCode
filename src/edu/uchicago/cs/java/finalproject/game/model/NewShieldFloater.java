@@ -8,6 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by Robert on 5/27/2015.
  */
+//Running into this will increase your shield life to 3.  It will appear red.
 public class NewShieldFloater extends NewShipFloater {
 
     private int nSpin;

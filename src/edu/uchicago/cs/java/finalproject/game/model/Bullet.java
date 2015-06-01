@@ -6,7 +6,7 @@ import java.util.Random;
 
 import edu.uchicago.cs.java.finalproject.controller.Game;
 
-
+//unchanged.
 public class Bullet extends Sprite {
 
 	  private final double FIRE_POWER = 35.0;
@@ -14,7 +14,7 @@ public class Bullet extends Sprite {
 	  private static Random R;
 
 	 
-	
+
 public Bullet(Falcon fal){
 		
 		super();
