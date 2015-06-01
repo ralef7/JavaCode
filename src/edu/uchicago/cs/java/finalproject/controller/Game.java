@@ -63,6 +63,7 @@ public class Game implements Runnable, KeyListener {
 
 	private Clip clpThrust;
 	private Clip clpMusicBackground;
+	private Clip laserKillBasic;
 
 	private static final int SPAWN_NEW_SHIP_FLOATER = 1200;
 	private static final int SPAWN_WEAPONS_UPGRADE = 1200;
@@ -83,6 +84,7 @@ public class Game implements Runnable, KeyListener {
 
 		clpThrust = Sound.clipForLoopFactory("whitenoise.wav");
 		clpMusicBackground = Sound.clipForLoopFactory("music-background.wav");
+		laserKillBasic = Sound.clipForLoopFactory("kapow.wav");
 	
 
 	}
@@ -206,6 +208,8 @@ public class Game implements Runnable, KeyListener {
 						 if (!CommandCenter.getFalcon().getProtected() && !CommandCenter.getFalcon().getOwnShield()){
 							tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
 							ownSpecialWeapon = false;
+							nuke = false;
+							nukeNum = 0;
 							for (int i = 0; i < 50; i++){
 								CommandCenter.movDebris.add(new Debris((Sprite)movFriend, movFriend.getCenter(), movFriend.getCenter()));
 							}
@@ -215,18 +219,22 @@ public class Game implements Runnable, KeyListener {
 
 						}
 					}
-					//not the falcon   //TODO: add nuke
+					//not the falcon
 					else if(movFriend instanceof Nuke) {
 						tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
 					    killFoe(movFoe);
-						CommandCenter.movFriends.add(new NukeExplosion((Nuke)movFriend));
+						CommandCenter.movFriends.add(new NukeExplosion((Nuke) movFriend));
+						Sound.playSound("blop.wav");
 					}
 					else {
 						tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
+						Sound.playSound("kapow.wav");
 
 						for (int i = 0; i < 50; i++) {
 							CommandCenter.movDebris.add(new Debris((Sprite) movFoe, movFoe.getCenter(), movFoe.getCenter()));
+
 						}
+
 						killFoe(movFoe);
 					}//end else 
 
@@ -258,10 +266,6 @@ public class Game implements Runnable, KeyListener {
 					totalScore += 10;
 					CommandCenter.setScore(totalScore);
 					EnhancedCommandCenter.setHighScore();
-//					if (movFloater instanceof NewShipFloater)
-//					{
-//
-//					}
 					if (movFloater instanceof NewNukeFloater)
 					{
 						nuke = true;
@@ -284,6 +288,8 @@ public class Game implements Runnable, KeyListener {
 					else if (movFloater instanceof NewNukeFloater){
 						nukeNum += 1;
 						nuke = true;
+						Sound.playSound("pacman_eatghost.wav");
+						break;
 					}
 					else {
 						CommandCenter.setNumFalcons(CommandCenter.getNumFalcons() + 1);
@@ -423,6 +429,7 @@ public class Game implements Runnable, KeyListener {
 			if (getTick() % 15 == 0){
 				CommandCenter.movFoes.add(new BulletUFO(ufo, 0));
 			}
+			Sound.playSound("witchLaugh.wav");
 
 		}
 	}
@@ -519,6 +526,7 @@ public class Game implements Runnable, KeyListener {
 			case NUKE:
 				if (nuke == true && nukeNum > 0)
 				{
+					Sound.playSound("nukeLaunch.wav");
 					CommandCenter.movFriends.add(new Nuke(fal));
 					nukeNum -= 1;
 					break;
@@ -551,6 +559,7 @@ public class Game implements Runnable, KeyListener {
 				if (ownSpecialWeapon == false)
 				{
 					CommandCenter.movFriends.add(new Bullet(fal));
+					Sound.playSound("laser.wav");
 				}
 				else
 				{
@@ -558,6 +567,7 @@ public class Game implements Runnable, KeyListener {
 					CommandCenter.movFriends.add(new SpecialBullet(fal, 340, 340));
 					CommandCenter.movFriends.add(new SpecialBullet(fal, 20, 20));
 					CommandCenter.movFriends.add(new SpecialBullet(fal, 40, 40));
+					Sound.playSound("specialLaser.wav");
 				}
 				if (CommandCenter.movFoes.contains(ufo))
 				{
@@ -568,7 +578,7 @@ public class Game implements Runnable, KeyListener {
 				}
 
 
-				Sound.playSound("laser.wav");
+
 				break;
 				
 			//special is a special weapon, current it just fires the cruise missile. 
