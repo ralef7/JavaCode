@@ -224,7 +224,6 @@ public class Game implements Runnable, KeyListener {
 						tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
 					    killFoe(movFoe);
 						CommandCenter.movFriends.add(new NukeExplosion((Nuke) movFriend));
-						Sound.playSound("blop.wav");
 					}
 					else {
 						tupMarkForRemovals.add(new Tuple(CommandCenter.movFriends, movFriend));
