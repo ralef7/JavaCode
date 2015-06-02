@@ -38,6 +38,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 	private GameFrame gmf;
 	private Font fnt = new Font("SansSerif", Font.BOLD, 12);
 	private Font fntBig = new Font("SansSerif", Font.BOLD + Font.ITALIC, 36);
+
 	private FontMetrics fmt; 
 	private int nFontWidth;
 	private int nFontHeight;
@@ -49,6 +50,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 	// ==============================================================
 	
 	public GamePanel(Dimension dim){
+		CommandCenter.setOwnShield(false);
 	    gmf = new GameFrame();
 		gmf.getContentPane().add(this);
 		gmf.pack();
@@ -87,6 +89,28 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		 g.drawString("LEVEL: " + CommandCenter.getLevel(), nFontWidth, nFontHeight + 40);
 	 }
 
+	//Logic for shield health bar
+	private  void showShieldStrength(Graphics g){
+		int shieldStrength = CommandCenter.getFalcon().getShield() * 20;
+		if (shieldStrength >= 80){
+			g.setColor(Color.CYAN);
+		}
+		else if (shieldStrength >= 40){
+			g.setColor(Color.ORANGE);
+		}
+		else if (shieldStrength>= 20){
+			g.setColor(Color.RED);
+		}
+		else{
+			g.setColor(Color.WHITE);
+		}
+		g.drawRect(5,60, shieldStrength ,15);
+		g.fillRect(5, 60, shieldStrength, 15);
+
+
+	}
+
+
 	
 	@SuppressWarnings("unchecked")
 	public void update(Graphics g) {
@@ -102,6 +126,12 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 
 		drawScore(grpOff);
 		showLevel(grpOff);
+
+		//If check designed to fix null pointer exception I was getting at the beginning of the game.  You can't show shield strength if no shield exists.
+		if (CommandCenter.getOwnShield()) {
+			showShieldStrength(grpOff);
+		}
+
 		
 		if (!CommandCenter.isPlaying()) {
 			displayTextOnScreen();

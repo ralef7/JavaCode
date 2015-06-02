@@ -281,6 +281,7 @@ public class Game implements Runnable, KeyListener {
 						CommandCenter.getFalcon().setShield(3);
 						shieldPower = CommandCenter.getFalcon().getShield();
 						CommandCenter.getFalcon().setOwnShield(true);
+						CommandCenter.setOwnShield(true);
 						Sound.playSound("pacman_eatghost.wav");
 						break;
 					}
@@ -512,6 +513,8 @@ public class Game implements Runnable, KeyListener {
 				ownSpecialWeapon = true;
 				CommandCenter.getFalcon().setOwnShield(true);
 				CommandCenter.getFalcon().setShield(5);
+				CommandCenter.setOwnShield(true);
+				System.out.println(CommandCenter.getOwnShield());
 				nukeNum = 1;
 				nuke = true;
 				break;

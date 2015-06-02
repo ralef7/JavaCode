@@ -145,7 +145,7 @@ public class CommandCenter {
 
 	public static void setShieldLevel(int n) {n = shieldLevel;}
 
-	public static void setOwnShield(boolean shield) {shield = shieldActive;}
+	public static void setOwnShield(boolean shield) {shieldActive = shield;}
 
 	public static boolean getOwnShield() {return shieldActive;}
 
