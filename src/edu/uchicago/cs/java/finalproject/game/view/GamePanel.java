@@ -104,7 +104,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		else{
 			g.setColor(Color.WHITE);
 		}
-		g.drawRect(5,60, shieldStrength ,15);
+		g.drawRect(5, 60, shieldStrength, 15);
 		g.fillRect(5, 60, shieldStrength, 15);
 
 
@@ -217,7 +217,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		fmt = g.getFontMetrics();
 		nFontWidth = fmt.getMaxAdvance();
 		nFontHeight = fmt.getHeight();
-		g.setFont(fntBig);					// set font info
+		g.setFont(fntBig);// set font info
 	}
 	
 	// This method draws some text to the middle of the screen before/after a game
@@ -273,6 +273,10 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		grpOff.drawString(strDisplay,
 				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
 						+ nFontHeight + 400);
+		strDisplay = "Your shield bar will appear in the upper corner of the screen and change color to sync with the color of your shield.";
+		grpOff.drawString(strDisplay,
+				(Game.DIM.width - fmt.stringWidth(strDisplay)) / 2, Game.DIM.height / 4
+						+ nFontHeight + 440);
 
 	}
 	
