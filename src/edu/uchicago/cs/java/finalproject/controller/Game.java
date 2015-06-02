@@ -559,7 +559,7 @@ public class Game implements Runnable, KeyListener {
 					CommandCenter.movFriends.add(new Bullet(fal));
 					Sound.playSound("laser.wav");
 				}
-				else
+				else if (ownSpecialWeapon == true)
 				{
 					CommandCenter.movFriends.add(new SpecialBullet(fal, 320, 320));
 					CommandCenter.movFriends.add(new SpecialBullet(fal, 340, 340));

@@ -5,6 +5,7 @@ package edu.uchicago.cs.java.finalproject.game.model;
  */
 //Implemented when I thought all of our code had to extend from the base code.  This just helps in displaying and keeping track of your session's
 //high score.
+//TODO: make high score persistent.
 public class EnhancedCommandCenter{
     private static long highScore;
 

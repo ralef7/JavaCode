@@ -23,6 +23,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 
 //Displays start screen, game screen, pause screen.  I added a current score to this and I update your ship lives count if you
 //run into a new ship floater.  This is also where I changed the game title and the directions to help the user play.
+//TODO: add meter for shield.
  public class GamePanel extends Panel {
 	
 	// ==============================================================
