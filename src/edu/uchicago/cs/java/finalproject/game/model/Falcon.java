@@ -173,7 +173,7 @@ public class Falcon extends Sprite {
 		//does the fading at the beginning or after hyperspace
 		Color colShip;
 		if (getFadeValue() == 255) {
-			colShip = Color.white;
+			colShip = Color.LIGHT_GRAY;
 		} else {
 			colShip = new Color(adjustColor(getFadeValue(), 200), adjustColor(
 					getFadeValue(), 175), getFadeValue());
@@ -200,7 +200,7 @@ public class Falcon extends Sprite {
 
 		//thrusting
 		if (bFlame) {
-			g.setColor(colShip);
+			g.setColor(Color.YELLOW);
 			//the flame
 			for (int nC = 0; nC < FLAME.length; nC++) {
 				if (nC % 2 != 0) //odd
@@ -247,6 +247,7 @@ public class Falcon extends Sprite {
 		super.draw(g);
 		g.setColor(col);
 		g.drawPolygon(getXcoords(), getYcoords(), dDegrees.length);
+
 	}
 
 	public void fadeInOut() {
@@ -279,5 +280,7 @@ public class Falcon extends Sprite {
 	public int getShield() {return nShield;}
 	public void setOwnShield(boolean covered) {bShield = covered;}
 	public boolean getOwnShield(){return bShield;}
+
 	
-} //end class
+}
+ //end class

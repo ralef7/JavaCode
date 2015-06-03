@@ -388,7 +388,7 @@ public class Game implements Runnable, KeyListener {
 	}
 
 	private void spawnNewShieldFloater(){
-		if (nTick % (SPAWN_NEW_SHIELD_FLOATER - nLevel * 100) == 0){
+		if (nTick % (SPAWN_NEW_SHIELD_FLOATER - nLevel * 10) == 0){
 			CommandCenter.movFloaters.add(new NewShieldFloater());
 
 		}
@@ -396,7 +396,7 @@ public class Game implements Runnable, KeyListener {
 
 	private void spawnUpgradeWeaponFloater(){
 		//this weapon should be given early in the game, and then occassionally thereafter
-		if (nTick % (SPAWN_WEAPONS_UPGRADE - nLevel * 100) == 0){
+		if (nTick % (SPAWN_WEAPONS_UPGRADE - nLevel * 5) == 0){
 			CommandCenter.movFloaters.add(new UpgradeWeaponFloater());
 		}
 	}
