@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * Created by Robert on 5/31/2015.
  */
 //Making this move faster makes it easier to catch I found. You kind of need nukes to get through the high levels.
+//All floaters are very similar and have very similar functionality.
 public class NewNukeFloater extends NewShipFloater {
 
     public NewNukeFloater() {

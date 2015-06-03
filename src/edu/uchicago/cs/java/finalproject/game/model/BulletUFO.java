@@ -31,7 +31,6 @@ public class BulletUFO extends Sprite {
 
         setExpire(20);
         setRadius(10);
-        int spreadOrientationAdjuster = R.nextInt(360);
 
         setDeltaX(enemyUFO.getDeltaX() + Math.cos(Math.toRadians(enemyUFO.getOrientation()+ angleShot)) * UFO_FIRE_POWER);
         setDeltaY(enemyUFO.getDeltaY() + Math.sin(Math.toRadians(enemyUFO.getOrientation()+ angleShot)) * UFO_FIRE_POWER);

@@ -8,7 +8,8 @@ import java.util.ArrayList;
 /**
  * Created by Robert on 5/27/2015.
  */
-//Running into this will increase your shield life to 3.  It will appear red.
+//Running into this will set your shield life to 3.
+//If you cheat, then you get the added bonus of a shield life of 5.  Up to you how you want to play the game.
 public class NewShieldFloater extends NewShipFloater {
 
     private int nSpin;

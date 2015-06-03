@@ -6,6 +6,8 @@ import java.util.ArrayList;
 /**
  * Created by Robert on 5/28/2015.
  */
+//Not in use.  Leaving it for now just in case I want to make a more dynamic shield in the future.  It was uncessary for
+//The features that I gave my shield.
 public class Shield extends Sprite {
 
     public static final double FALCON_THRUST = .65;

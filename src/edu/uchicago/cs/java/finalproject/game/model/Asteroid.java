@@ -10,7 +10,6 @@ import edu.uchicago.cs.java.finalproject.controller.Game;
 //Asteroid is now Spider.
 public class Asteroid extends Sprite {
 
-	
 	private int nSpin;
 	
 	//radius of a large asteroid
@@ -43,8 +42,7 @@ public class Asteroid extends Sprite {
 		if(nDY %2 ==0)
 			nDY = -nDY;
 		setDeltaY(nDY);
-			
-	//	assignRandomShape();
+
 		ArrayList<Point> points = new ArrayList<>();
 		points.add(new Point(0,3));
 		points.add(new Point(-2,0));
@@ -64,10 +62,18 @@ public class Asteroid extends Sprite {
 		points.add(new Point(-5, -5));
 		points.add(new Point(-1,-4));
 		points.add(new Point(0, -5));
+		points.add(new Point(-5, -7));
+		points.add(new Point(-10, -5));
+		points.add(new Point(-5, -7));
+		points.add(new Point(0, -5));
 		points.add(new Point(-1, -6));
 		points.add(new Point(-1, -7));
 		points.add(new Point(1, -7));
 		points.add(new Point(1, -6));
+		points.add(new Point(0, -5));
+		points.add(new Point(5, -7));
+		points.add(new Point(10, -5));
+		points.add(new Point(5, -7));
 		points.add(new Point(0, -5));
 		points.add(new Point(1, -4));
 		points.add(new Point(5, -5));
@@ -128,8 +134,7 @@ public class Asteroid extends Sprite {
 		if(nDY %2 ==0)
 			nDY = -nDY;
 		setDeltaY(nDY);
-			
-		//assignRandomShape();
+
 		ArrayList<Point> points = new ArrayList<>();
 		points.add(new Point(0,3));
 		points.add(new Point(-2,0));
@@ -224,6 +229,7 @@ public class Asteroid extends Sprite {
 	}
 	
 	//this is for an asteroid only
+	//I left this in here just in case anyone in the future would want to incorporate this method.
 	  public void assignRandomShape ()
 	  {
 	    int nSide = Game.R.nextInt( 7 ) + 7;
@@ -258,7 +264,5 @@ public class Asteroid extends Sprite {
 					dLengths[nC] = 1;
 			}
 		setLengths(dLengths);
-
 	  }
-
 }

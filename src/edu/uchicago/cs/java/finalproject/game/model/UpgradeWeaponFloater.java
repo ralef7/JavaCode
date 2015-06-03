@@ -8,12 +8,13 @@ import java.util.ArrayList;
 /**
  * Created by Robert on 5/27/2015.
  */
+//Very similar to the other floaters.
 public class UpgradeWeaponFloater extends NewShipFloater {
 
     public UpgradeWeaponFloater(){
         super();
         ArrayList<Point> pntCs = new ArrayList<Point>();
-        // top of ship
+        // floater points
         pntCs.add(new Point(5, 5));
         pntCs.add(new Point(4,0));
         pntCs.add(new Point(5, -5));
@@ -57,6 +58,4 @@ public class UpgradeWeaponFloater extends NewShipFloater {
 
         setColor(Color.GREEN);
     }
-
-
 }

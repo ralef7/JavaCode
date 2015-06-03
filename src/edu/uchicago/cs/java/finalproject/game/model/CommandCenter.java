@@ -14,7 +14,6 @@ public class CommandCenter {
 	private static int shieldLevel;
 	private static long lScore;
 	private static Falcon falShip;
-	private static Debris debris;
 	private static boolean bPlaying;
 	private static boolean bPaused;
 	private static boolean shieldActive;
@@ -48,7 +47,6 @@ public class CommandCenter {
 			if (!bFirst)
 			    setNumFalcons(getNumFalcons() - 1);
 		}
-		
 		Sound.playSound("shipspawn.wav");
 
 	}
@@ -115,21 +113,15 @@ public class CommandCenter {
 		falShip = falParam;
 	}
 
-	public static Debris getDebris() {return  debris;}
-
-	public static void setDebris(Sprite deadSprite, Point start, Point end){}
-
 
 	public static CopyOnWriteArrayList<Movable> getMovDebris() {
 		return movDebris;
 	}
 
 
-
 	public static CopyOnWriteArrayList<Movable> getMovFriends() {
 		return movFriends;
 	}
-
 
 
 	public static CopyOnWriteArrayList<Movable> getMovFoes() {
@@ -143,12 +135,10 @@ public class CommandCenter {
 
 	public static int getShieldLevel()  {return shieldLevel;}
 
-	public static void setShieldLevel(int n) {n = shieldLevel;}
+	public static void setShieldLevel(int n) {shieldLevel = n;}
 
 	public static void setOwnShield(boolean shield) {shieldActive = shield;}
 
 	public static boolean getOwnShield() {return shieldActive;}
 
-	
-	
 }

@@ -9,11 +9,10 @@ import java.util.Arrays;
 /**
  * Created by Robert on 5/24/2015.
  */
+//Really should be called Witch.
 public class UFO extends Sprite {
 
-
-
-    //radius of our UFO
+    //radius of our Witch
     private final int RAD = 120;
     private int nSpin;
     private final int RECKLESS_MOVER = 10;
@@ -76,29 +75,6 @@ public class UFO extends Sprite {
         pntCs.add(new Point(4,10));
         pntCs.add(new Point(2, 9));
         pntCs.add(new Point(-1, 13));
-//        pntCs.add(new Point(0, 18));
-//
-//        //right points
-//        pntCs.add(new Point(3, 3));
-//        pntCs.add(new Point(12, 0));
-//        pntCs.add(new Point(13, -2));
-//        pntCs.add(new Point(13, -4));
-//        pntCs.add(new Point(11, -2));
-//        pntCs.add(new Point(4, -3));
-//        pntCs.add(new Point(2, -10));
-//        pntCs.add(new Point(4, -12));
-//        pntCs.add(new Point(2, -13));
-//
-//        //left points
-//        pntCs.add(new Point(-2, -13));
-//        pntCs.add(new Point(-4, -12));
-//        pntCs.add(new Point(-2, -10));
-//        pntCs.add(new Point(-4, -3));
-//        pntCs.add(new Point(-11, -2));
-//        pntCs.add(new Point(-13, -4));
-//        pntCs.add(new Point(-13, -2));
-//        pntCs.add(new Point(-12, 0));
-//        pntCs.add(new Point(-3, 3));
 
         assignPolarPoints(pntCs);
 
