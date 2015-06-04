@@ -278,7 +278,7 @@ public class Game implements Runnable, KeyListener {
 					}
 					else if (movFloater instanceof NewShieldFloater)
 					{
-						CommandCenter.getFalcon().setShield(3);
+						CommandCenter.getFalcon().setShield(5);
 						shieldPower = CommandCenter.getFalcon().getShield();
 						CommandCenter.getFalcon().setOwnShield(true);
 						CommandCenter.setOwnShield(true);
