@@ -120,7 +120,8 @@ public class Falcon extends Sprite {
 					* THRUST;
 			double dAdjustY = Math.sin(Math.toRadians(getOrientation()))
 					* THRUST;
-			setDeltaX(getDeltaX() + dAdjustX);
+			//When thrusting is off, keep ship moving a la anti-gravity game space.
+ 			setDeltaX(getDeltaX() + dAdjustX);
 			setDeltaY(getDeltaY() + dAdjustY);
 		}
 		if (bTurningLeft) {
