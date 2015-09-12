@@ -79,7 +79,7 @@ public class Game implements Runnable, KeyListener {
 
 	public Game() {
 
-		gmpPanel = new EnhancedGamePanel(DIM);
+		gmpPanel = new GamePanel(DIM);
 		gmpPanel.addKeyListener(this);
 
 		clpThrust = Sound.clipForLoopFactory("whitenoise.wav");
@@ -264,7 +264,7 @@ public class Game implements Runnable, KeyListener {
 					tupMarkForRemovals.add(new Tuple(CommandCenter.movFloaters, movFloater));
 					totalScore += 10;
 					CommandCenter.setScore(totalScore);
-					EnhancedCommandCenter.setHighScore();
+					CommandCenter.setHighScore();
 					if (movFloater instanceof NewNukeFloater)
 					{
 						nuke = true;
@@ -332,7 +332,7 @@ public class Game implements Runnable, KeyListener {
 					tupMarkForAdds.add(new Tuple(CommandCenter.movFoes, new UFO(3)));
 				}
 				CommandCenter.setScore(totalScore += 100);
-				EnhancedCommandCenter.setHighScore();
+				CommandCenter.setHighScore();
 				
 			} 
 			//medium size aseroid exploded
@@ -342,12 +342,12 @@ public class Game implements Runnable, KeyListener {
 				tupMarkForAdds.add(new Tuple(CommandCenter.movFoes,new Asteroid(astExploded)));
 				tupMarkForAdds.add(new Tuple(CommandCenter.movFoes,new Asteroid(astExploded)));
 				CommandCenter.setScore(totalScore += 50);
-				EnhancedCommandCenter.setHighScore();
+				CommandCenter.setHighScore();
 			}
 			//remove the original Foe	
 			tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
 			CommandCenter.setScore(totalScore += 25);
-			EnhancedCommandCenter.setHighScore();
+			CommandCenter.setHighScore();
 			
 		} 
 		//not an asteroid
@@ -355,7 +355,7 @@ public class Game implements Runnable, KeyListener {
 			//remove the original Foe
 			tupMarkForRemovals.add(new Tuple(CommandCenter.movFoes, movFoe));
 			CommandCenter.setScore(totalScore += 1000);
-			EnhancedCommandCenter.setHighScore();
+			CommandCenter.setHighScore();
 		}
 	}
 
@@ -409,7 +409,7 @@ public class Game implements Runnable, KeyListener {
 		CommandCenter.initGame();
 		CommandCenter.setLevel(0);
 		ownSpecialWeapon = false;
-		EnhancedCommandCenter.setHighScore();
+		CommandCenter.setHighScore();
 		totalScore = 0;
 		CommandCenter.setPlaying(true);
 		CommandCenter.setPaused(false);

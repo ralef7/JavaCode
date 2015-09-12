@@ -8,16 +8,9 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Panel;
 import java.awt.Point;
-import java.awt.event.WindowEvent;
 import java.util.concurrent.CopyOnWriteArrayList;
-
-import javax.swing.JFrame;
-
-
-import com.sun.jmx.remote.internal.ClientCommunicatorAdmin;
 import edu.uchicago.cs.java.finalproject.controller.Game;
 import edu.uchicago.cs.java.finalproject.game.model.CommandCenter;
-import edu.uchicago.cs.java.finalproject.game.model.EnhancedCommandCenter;
 import edu.uchicago.cs.java.finalproject.game.model.Falcon;
 import edu.uchicago.cs.java.finalproject.game.model.Movable;
 
@@ -42,6 +35,7 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 	private int nFontWidth;
 	private int nFontHeight;
 	private String strDisplay = "";
+	private Font highScoreFont = new Font("Times New Roman", Font.BOLD, 12);
 	
 
 	// ==============================================================
@@ -75,11 +69,22 @@ import edu.uchicago.cs.java.finalproject.game.model.Movable;
 		} else {
 			g.drawString("NO SCORE", nFontWidth, nFontHeight);
 		}
-		if (EnhancedCommandCenter.getHighScore() != 0) {
-			g.drawString("HIGH SCORE :  " + EnhancedCommandCenter.getHighScore(), nFontWidth, nFontHeight+20);
+		if (CommandCenter.getHighScore() != 0) {
+			g.drawString("HIGH SCORE :  " + CommandCenter.getHighScore(), nFontWidth, nFontHeight+20);
 		} else {
 			g.drawString("NO HIGH SCORE", nFontWidth, nFontHeight+20);
 		}
+	}
+
+	private void drawHighScore(Graphics g){
+		g.setColor(Color.white);
+		g.setFont(highScoreFont);
+		if (CommandCenter.getScore() != 0) {
+			g.drawString("HIGH SCORE :  " + CommandCenter.getHighScore(), nFontWidth, nFontHeight);
+		} else {
+			g.drawString("NO HIGH SCORE", nFontWidth, nFontHeight);
+		}
+
 	}
 
 	 private void showLevel(Graphics g){

@@ -17,6 +17,7 @@ public class CommandCenter {
 	private static boolean bPlaying;
 	private static boolean bPaused;
 	private static boolean shieldActive;
+	private static long highScore = 0;
 	
 	// These ArrayLists are thread-safe
 	public static CopyOnWriteArrayList<Movable> movDebris = new CopyOnWriteArrayList<Movable>();
@@ -35,6 +36,7 @@ public class CommandCenter {
 		setShieldLevel(0);
 		spawnFalcon(true);
 		setOwnShield(false);
+
 	}
 	
 	// The parameter is true if this is for the beginning of the game, otherwise false
@@ -79,6 +81,16 @@ public class CommandCenter {
 			return true;
 		}
 		return false;
+	}
+
+	public static void setHighScore(){
+		if (CommandCenter.getScore() >= highScore){
+			highScore = CommandCenter.getScore();
+		}
+	}
+
+	public static long getHighScore(){
+		return highScore;
 	}
 
 	public static int getLevel() {
